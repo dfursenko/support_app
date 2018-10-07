@@ -1,6 +1,7 @@
 class Ticket < ApplicationRecord
   belongs_to :user,       class_name: 'User', inverse_of: 'requests'
   belongs_to :moderator,  class_name: 'User', inverse_of: 'tickets'
+  has_many :comments, as: :commentable
 
   validates :user,      presence: true
   validates :body,      presence: true
