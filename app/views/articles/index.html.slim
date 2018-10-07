@@ -15,8 +15,8 @@ table
   tbody
     - @articles.each do |article|
       tr
-        td = article.user
-        td = article.category
+        td = article.user.email
+        td = article.category.title
         td = article.title
         td = article.body
         td = article.published
