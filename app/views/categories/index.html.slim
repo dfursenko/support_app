@@ -16,7 +16,7 @@ table
       tr
         td = category.title
         td = category.level
-        td = category.parent
+        td = category.parent.title if category.parent
         td = category.published
         td = link_to 'Show', category
         td = link_to 'Edit', edit_category_path(category)
