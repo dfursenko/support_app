@@ -2,10 +2,12 @@
 
 one:
   commentable: one
+  commentable_type: Commentable
   body: MyString
   published: false
 
 two:
   commentable: two
+  commentable_type: Commentable
   body: MyString
   published: false
