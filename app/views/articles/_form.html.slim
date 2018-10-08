@@ -19,6 +19,14 @@
     = f.label :body
     = f.text_area :body
   .field
+    = f.label :tags
+    = f.text_area :body {"asdf asdf asdf"}
+    / = text_area_tag(:message, "Hi, nice site", size: "24x6")
+  .field
+    = f.label :tags
+    = f.fields_for :tags do |t|
+      = t.text_field :name
+  .field
     = f.label :published
     = f.check_box :published
   .actions = f.submit
