@@ -1,8 +1,7 @@
 .p-documents__items
   .p-documents__item.is-active
     .p-documents__item-preview
-      = image_tag '1.png', class: 'embed-responsive'
-      / img.embed-responsive[src="#{image_tag('1.png')}" alt=""]
+      img.embed-responsive[src="img/documents/1.png" alt=""]
       .p-documents__item-overlay
         a.iconfont.iconfont-actions-preview.p-documents__item-control[href="#"]
         a.iconfont.iconfont-actions-settings.p-documents__item-control[href="#"]
@@ -120,36 +119,3 @@
         | Habits.png
       span.p-documents__item-date
         | 1 min ago
-
-h1 Listing articles
-
-table
-  thead
-    tr
-      th User
-      th Category
-      th Title
-      th Body
-      th Tags
-      th Published
-      th
-      th
-      th
-
-  tbody
-    - @articles.each do |article|
-      tr
-        td = article.user.email
-        td = article.category.title
-        td = article.title
-        td = article.body
-        / td = render partial: "tags", collection: article.tags if article.tags
-        td = render partial: "tags", locals: {tags: article.tags} if article.tags
-        td = article.published
-        td = link_to 'Show', article
-        td = link_to 'Edit', edit_article_path(article)
-        td = link_to 'Destroy', article, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Article', new_article_path
