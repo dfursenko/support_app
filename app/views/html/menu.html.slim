@@ -1,0 +1,388 @@
+#navbar-collapse.collapse.navbar-collapse
+  .navbar__menu
+    ul.navbar-nav
+      li.nav-item.dropdown.navbar__menu-item
+        a.nav-link.dropdown-toggle[href="#" data-toggle="dropdown"]
+          |  Project 
+        .dropdown-menu.navbar__menu-dropdown-menu[aria-labelledby="navbarDropdown"]
+          a.dropdown-item[href="#"]
+            span.iconfont-users.dropdown-item__icon
+            | Lead
+          a.dropdown-item[href="#"]
+            span.iconfont-user-circle.dropdown-item__icon
+            | Contact: Person
+          a.dropdown-item[href="#"]
+            span.iconfont-building-b.dropdown-item__icon
+            | Contact: Company
+          a.dropdown-item[href="#"]
+            span.iconfont-deal.dropdown-item__icon
+            | Deal
+          a.dropdown-item[href="#"]
+            span.iconfont-arrow-right.dropdown-item__icon
+            | Import
+      li.nav-item.dropdown.dropdown__columns.navbar__menu-item
+        a.nav-link.dropdown-toggle[href="#" data-toggle="dropdown"]
+          |  Features 
+        .dropdown-menu.dropdown__columns-menu.navbar__menu-dropdown-menu[aria-labelledby="navbarDropdown"]
+          .dropdown__columns-container
+            .dropdown__columns-column
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Range Slider
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Confirm Alerts
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Tag Editor
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Date Picker
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Date Range Picker
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | File Upload
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Growl Notifications
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Wysiwyg Editor
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Page Tour
+            .dropdown__columns-column
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Sweet Alert
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | DataTables
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Spreadsheet
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Email Templates
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Messenger
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Mail
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | File Storage
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Kanban Board
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Social Profile
+            .dropdown__columns-column
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Sign In
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Sign Up
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Invoices
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Pricing Table
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Help Center
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Settings
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Scheduler
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Social Feed
+              a.dropdown-item.dropdown__columns-item[href="#"]
+                | Widgets
+      li.nav-item.navbar__menu-item
+        a.nav-link[href="#"]
+          | Settings
+      li.nav-item.navbar__menu-item
+        a.nav-link[href="#"]
+          | Help
+    .navbar__menu-side
+      .navbar__actions
+        a.btn.btn-info.icon-left.subnav__header-side-item[href="https://themeforest.net/item/universeadmin-powerful-responsive-bootstrap-4-admin-template/20926048?ref=themesanytime"]
+          |  Buy Now 
+          span.btn-icon.mdi.mdi-cart
+      .navbar-search.navbar__menu-search
+        .input-group.input-group-icon.iconfont.icon-right
+          input.form-control.navbar-search__input.navbar__menu-search-input[placeholder="Search" type="text"]
+          span.input-icon.ua-icon-search
+  .dropdown.navbar-dropdown.no-arrow.navbar-notify-dropdown
+    a.dropdown-toggle.navbar-dropdown-toggle[data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"]
+      span.navbar-notify.navbar-notify--notifications
+        span
+          span.navbar-notify__icon.mdi.mdi-bell
+          span.navbar-notify__text
+            | Notifications
+    .dropdown-menu.dropdown-menu-right.navbar-dropdown-menu.navbar-dropdown-notifications
+      .navbar-dropdown-notifications__header
+        span
+          | NOTIFICATIONS
+        a.navbar-dropdown-notifications__mark-read[href="#"]
+          |  Mark all as read 
+          span.navbar-dropdown-notifications__mark-read-icon.ua-icon-arrow-circle-down
+      .navbar-dropdown-notifications__body.js-scrollable[data-simplebar="init"]
+        .simplebar-track.vertical[style="visibility: hidden;"]
+          .simplebar-scrollbar
+        .simplebar-track.horizontal[style="visibility: hidden;"]
+          .simplebar-scrollbar
+        .simplebar-scroll-content[style="padding-right: 10px; margin-bottom: -20px;"]
+          .simplebar-content[style="padding-bottom: 10px; margin-right: -10px;"]
+            .navbar-dropdown-notification.is-new
+              .navbar-dropdown-notification__user
+                img.navbar-dropdown-notification__avatar.rounded-circle[src="img/users/user-4.png" alt="" width="40" height="40"]
+                .ua-icon-circle-check.navbar-dropdown-notification__icon.color-success
+              .navbar-dropdown-notification__content
+                a.navbar-dropdown-notification__action-name[href="#"]
+                  | Antonius in Project X 
+                .navbar-dropdown-notification__action-desc
+                  | Added a 
+                  strong
+                    | Task
+                  |  to you in 
+                  strong
+                    | Designer Candidates
+              span.navbar-dropdown-notification__date
+                | 9:49 AM
+            .navbar-dropdown-notification
+              .navbar-dropdown-notification__user
+                img.navbar-dropdown-notification__avatar.rounded-circle[src="img/users/user-5.png" alt="" width="40" height="40"]
+                .ua-icon-letter-alt.navbar-dropdown-notification__icon.color-danger.navbar-dropdown-notification__icon--letter
+              .navbar-dropdown-notification__content
+                a.navbar-dropdown-notification__action-name[href="#"]
+                  | Antonius in Project X 
+                .navbar-dropdown-notification__action-desc
+                  | Added a 
+                  strong
+                    | Task
+                  |  to you in 
+                  strong
+                    | Designer Candidates
+              span.navbar-dropdown-notification__date
+                | 9:49 AM
+            .navbar-dropdown-notification
+              .navbar-dropdown-notification__user
+                img.navbar-dropdown-notification__avatar.rounded-circle[src="img/users/user-6.png" alt="" width="40" height="40"]
+                .ua-icon-warning.navbar-dropdown-notification__icon.color-warning.navbar-dropdown-notification__icon--warning
+              .navbar-dropdown-notification__content
+                a.navbar-dropdown-notification__action-name[href="#"]
+                  | Antonius in Project X 
+                .navbar-dropdown-notification__action-desc
+                  | Added a 
+                  strong
+                    | Task
+                  |  to you in 
+                  strong
+                    | Designer Candidates
+              span.navbar-dropdown-notification__date
+                | 9:49 AM
+            .navbar-dropdown-notification
+              .navbar-dropdown-notification__user
+                img.navbar-dropdown-notification__avatar.rounded-circle[src="img/users/user-7.png" alt="" width="40" height="40"]
+                .ua-icon-circle-check.navbar-dropdown-notification__icon.color-success
+              .navbar-dropdown-notification__content
+                a.navbar-dropdown-notification__action-name[href="#"]
+                  | Antonius in Project X 
+                .navbar-dropdown-notification__action-desc
+                  | Added a 
+                  strong
+                    | Task
+                  |  to you in 
+                  strong
+                    | Designer Candidates
+              span.navbar-dropdown-notification__date
+                | 9:49 AM
+            .navbar-dropdown-notification__date-separator
+              | Yesterday
+            .navbar-dropdown-notification
+              .navbar-dropdown-notification__user
+                img.navbar-dropdown-notification__avatar.rounded-circle[src="img/users/user-8.png" alt="" width="40" height="40"]
+                .ua-icon-letter-alt.navbar-dropdown-notification__icon.color-danger.navbar-dropdown-notification__icon--letter
+              .navbar-dropdown-notification__content
+                a.navbar-dropdown-notification__action-name[href="#"]
+                  | Antonius in Project X 
+                .navbar-dropdown-notification__action-desc
+                  | Added a 
+                  strong
+                    | Task
+                  |  to you in 
+                  strong
+                    | Designer Candidates
+              span.navbar-dropdown-notification__date
+                | 9:49 AM
+            .navbar-dropdown-notification
+              .navbar-dropdown-notification__user
+                img.navbar-dropdown-notification__avatar.rounded-circle[src="img/users/user-9.png" alt="" width="40" height="40"]
+                .ua-icon-warning.navbar-dropdown-notification__icon.color-warning.navbar-dropdown-notification__icon--warning
+              .navbar-dropdown-notification__content
+                a.navbar-dropdown-notification__action-name[href="#"]
+                  | Antonius in Project X 
+                .navbar-dropdown-notification__action-desc
+                  | Added a 
+                  strong
+                    | Task
+                  |  to you in 
+                  strong
+                    | Designer Candidates
+              span.navbar-dropdown-notification__date
+                | 9:49 AM
+            .navbar-dropdown-notification
+              .navbar-dropdown-notification__user
+                img.navbar-dropdown-notification__avatar.rounded-circle[src="img/users/user-10.png" alt="" width="40" height="40"]
+                .ua-icon-circle-check.navbar-dropdown-notification__icon.color-success
+              .navbar-dropdown-notification__content
+                a.navbar-dropdown-notification__action-name[href="#"]
+                  | Antonius in Project X 
+                .navbar-dropdown-notification__action-desc
+                  | Added a 
+                  strong
+                    | Task
+                  |  to you in 
+                  strong
+                    | Designer Candidates
+              span.navbar-dropdown-notification__date
+                | 9:49 AM
+      a.navbar-dropdown-notifications__view-all[href="#"]
+        span.icon.ua-icon-view-all
+        span
+          | View all
+  .dropdown.navbar-dropdown.no-arrow.navbar-notify-dropdown.navbar-notify-dropdown--messages
+    a.dropdown-toggle.navbar-dropdown-toggle[data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"]
+      span.navbar-notify
+        span
+          span.navbar-notify__icon.mdi.mdi-email
+          span.navbar-notify__text
+            | Messages
+        span.navbar-notify__indicator
+    .dropdown-menu.dropdown-menu-right.navbar-dropdown-menu.navbar-dropdown-notifications.navbar-dropdown-messages
+      .navbar-dropdown-notifications__header
+        span
+          | MESSAGES
+        a.navbar-dropdown-notifications__mark-read[href="#"]
+          |  Mark all as read 
+          span.navbar-dropdown-notifications__mark-read-icon.ua-icon-arrow-circle-down
+      .navbar-dropdown-notifications__body.navbar-dropdown-notifications__body-messages.js-scrollable[data-simplebar="init"]
+        .simplebar-track.vertical[style="visibility: hidden;"]
+          .simplebar-scrollbar
+        .simplebar-track.horizontal[style="visibility: hidden;"]
+          .simplebar-scrollbar
+        .simplebar-scroll-content[style="padding-right: 10px; margin-bottom: -20px;"]
+          .simplebar-content[style="padding-bottom: 10px; margin-right: -10px;"]
+            .navbar-dropdown-notifications__item.is-unread
+              img.navbar-dropdown-notifications__item-avatar.rounded-circle[src="img/users/user-4.png" alt="" width="40" height="40"]
+              .navbar-dropdown-notifications__item-notify
+                div
+                  span.icon.ua-icon-reply-to
+                  strong
+                    | Gabriel Saunders
+                  |  replied to 
+                  strong
+                    | your comment
+                  |  to 
+                  strong
+                    | The secret weapon of lebound marketing...
+                .navbar-dropdown-notifications__item-datetime
+                  | 5 minute ago
+              .navbar-dropdown-notifications__item-actions
+                span.icon.ua-icon-circle-check.navbar-dropdown-notifications__item-mark-as-read[data-toggle="tooltip" data-placement="top" data-tippy="" aria-describedby="tippy-1" data-original-title="Mark as read"]
+                span.icon.ua-icon-circle-close.navbar-dropdown-notifications__item-remove[data-toggle="tooltip" data-placement="top" data-tippy="" aria-describedby="tippy-2" data-original-title="Delete notification"]
+            .navbar-dropdown-notifications__item
+              img.navbar-dropdown-notifications__item-avatar.rounded-circle[src="img/users/user-5.png" alt="" width="40" height="40"]
+              .navbar-dropdown-notifications__item-notify
+                div
+                  span.icon.ua-icon-comments
+                  strong
+                    | Gabriel Saunders
+                  |  replied to 
+                  strong
+                    | your comment
+                  |  to 
+                  strong
+                    | The secret weapon of lebound marketing...
+                .navbar-dropdown-notifications__item-datetime
+                  | 5 minute ago
+              .navbar-dropdown-notifications__item-actions
+                span.icon.ua-icon-circle-check.navbar-dropdown-notifications__item-mark-as-read[data-toggle="tooltip" data-placement="top" data-tippy="" aria-describedby="tippy-3" data-original-title="Mark as read"]
+                span.icon.ua-icon-circle-close.navbar-dropdown-notifications__item-remove[data-toggle="tooltip" data-placement="top" data-tippy="" aria-describedby="tippy-4" data-original-title="Delete notification"]
+            .navbar-dropdown-notifications__item.is-unread
+              img.navbar-dropdown-notifications__item-avatar.rounded-circle[src="img/users/user-6.png" alt="" width="40" height="40"]
+              .navbar-dropdown-notifications__item-notify
+                div
+                  span.icon.ua-icon-star
+                  strong
+                    | Shawna Cohen
+                  |  replied to 
+                  strong
+                    | your comment
+                  |  to 
+                  strong
+                    | The secret weapon of lebound marketing...
+                .navbar-dropdown-notifications__item-datetime
+                  | 5 minute ago
+              .navbar-dropdown-notifications__item-actions
+                span.icon.ua-icon-circle-check.navbar-dropdown-notifications__item-mark-as-read[data-toggle="tooltip" data-placement="top" data-tippy="" aria-describedby="tippy-5" data-original-title="Mark as read"]
+                span.icon.ua-icon-circle-close.navbar-dropdown-notifications__item-remove[data-toggle="tooltip" data-placement="top" data-tippy="" aria-describedby="tippy-6" data-original-title="Delete notification"]
+            .navbar-dropdown-notifications__item.is-unread
+              img.navbar-dropdown-notifications__item-avatar.rounded-circle[src="img/users/user-7.png" alt="" width="40" height="40"]
+              .navbar-dropdown-notifications__item-notify
+                div
+                  span.icon.ua-icon-download
+                  strong
+                    | Jason Kendall
+                  |  replied to 
+                  strong
+                    | your comment
+                  |  to 
+                  strong
+                    | The secret weapon of lebound marketing...
+                .navbar-dropdown-notifications__item-datetime
+                  | 5 minute ago
+              .navbar-dropdown-notifications__item-actions
+                span.icon.ua-icon-circle-check.navbar-dropdown-notifications__item-mark-as-read[data-toggle="tooltip" data-placement="top" data-tippy="" aria-describedby="tippy-7" data-original-title="Mark as read"]
+                span.icon.ua-icon-circle-close.navbar-dropdown-notifications__item-remove[data-toggle="tooltip" data-placement="top" data-tippy="" aria-describedby="tippy-8" data-original-title="Delete notification"]
+      a.navbar-dropdown-notifications__view-all[href="#"]
+        span.icon.ua-icon-view-all
+        span
+          | View all
+  .dropdown.navbar-dropdown.no-arrow.navbar-help-dropdown.navbar-notify-dropdown--help
+    a.dropdown-toggle.navbar-dropdown-toggle[data-toggle="dropdown" href="#"]
+      span.navbar-notify
+        span
+          span.navbar-notify__icon.mdi.mdi-help-circle
+          span.navbar-notify__text
+            | Info
+    .dropdown-menu.dropdown-menu-center.navbar-dropdown-menu
+      h6.navbar-help-dropdown__heading
+        | Need Help?
+      p.navbar-help-dropdown__desc
+        |  Give us a call 888-898-8302 
+        br
+        |  send a email: 
+        a[href="#"]
+          | info@example.com
+        br
+        |  or 
+      div
+        a.btn.btn-info.navbar-help-dropdown__submit[href="help-center-submit-ticket.html"]
+          | Submit a Ticket
+  .dropdown.navbar-dropdown
+    a.dropdown-toggle.navbar-dropdown-toggle.navbar-dropdown-toggle__user[data-toggle="dropdown" href="#"]
+      img.navbar-dropdown-toggle__user-avatar[src="img/users/user-3.png" alt=""]
+      span.navbar-dropdown__user-name
+        | John Smith
+    .dropdown-menu.navbar-dropdown-menu.navbar-dropdown-menu__user
+      .navbar-dropdown-user-content
+        .dropdown-user__avatar
+          img[src="img/users/user-3.png" alt=""]
+        .dropdown-info
+          .dropdown-info__name
+            | John Smith
+          .dropdown-info__job
+            | Manager
+          .dropdown-info-buttons
+            a.dropdown-info__viewprofile[href="#"]
+              | View Profile
+            a.dropdown-info__addaccount[href="#"]
+              | Add account
+      a.dropdown-item.navbar-dropdown__item[href="#"]
+        | Upgrade to 
+        span
+          | PRO
+      a.dropdown-item.navbar-dropdown__item[href="#"]
+        | Invite team member
+      a.dropdown-item.navbar-dropdown__item[href="#"]
+        | Fedback
+      a.dropdown-item.navbar-dropdown__item[href="#"]
+        | Help
+      a.dropdown-item.navbar-dropdown__item[href="#"]
+        | Sign Out

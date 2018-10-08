@@ -1,20 +1,28 @@
 p#notice = notice
 
-p
-  strong User:
-  = @article.user
-p
-  strong Category:
-  = @article.category
-p
-  strong Title:
+
+h1
   = @article.title
+
+h4
+  strong Автор:
+  = @article.user.email
+h3
+  strong Раздел:
+  = @article.category.title
 p
   strong Body:
   = @article.body
 p
   strong Tags:
   = @article.tags.map{|t| t.name}.join(", ")
+p
+  strong Comments:
+  br
+  = render partial: 'comments/comments', locals: {comments: @comments}
+h2
+  - if @comments
+    = paginate @comments, param_name: :comments_part, params: {anchor: 'comment-header'}
 p
   strong Published:
   = @article.published

@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   resources :tickets do
     resources :comments, module: :tickets
   end
-  root 'page#index'
+  root 'articles#index'
   get 'page/about'
 end
