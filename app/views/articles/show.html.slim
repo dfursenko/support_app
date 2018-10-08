@@ -14,7 +14,7 @@ p
   = @article.body
 p
   strong Tags:
-  = @article.tags
+  = @article.tags.map{|t| t.name}.join(", ")
 p
   strong Published:
   = @article.published
