@@ -13,11 +13,25 @@ p
   strong Body:
   = @article.body
 p
+  strong Tags:
+  = @article.tags.map{|t| t.name}.join(", ")
+p
   strong Published:
   = @article.published
-
 p
   = render partial: 'comments/form', locals: {commentable: @article}
+p
+  | Была ли данная статья полезна?
+  = form_for @article.mark User.first, @article do |form|
+    = form.hidden_field :article_id, value: @article.id
+    = form.hidden_field :value, value: true
+    = form.submit value: "Да"
+
+  = form_for @article.mark User.first, @article do |form|
+    = form.hidden_field :article_id, value: @article.id
+    = form.hidden_field :value, value: false
+    = form.submit value: "Нет"
+
 
 => link_to 'Edit', edit_article_path(@article)
 '|
