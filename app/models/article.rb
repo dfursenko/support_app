@@ -4,6 +4,7 @@ class Article < ApplicationRecord
   has_many :comments, as: :commentable
   has_and_belongs_to_many :tags
   # accepts_nested_attributes_for :tags
+  has_many :marks
 
   validates :user,      presence: true
   validates :category,  presence: true
