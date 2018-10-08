@@ -19,7 +19,10 @@ p
 p
   strong Comments:
   br
-  = render partial: 'comments/comments', locals: {comments: @article.comments}
+  = render partial: 'comments/comments', locals: {comments: @comments}
+h2
+  - if @comments
+    = paginate @comments, param_name: :comments_part, params: {anchor: 'comment-header'}
 p
   strong Published:
   = @article.published
