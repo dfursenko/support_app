@@ -13,8 +13,8 @@ table
   tbody
     - @marks.each do |mark|
       tr
-        td = mark.user
-        td = mark.article
+        td = mark.user.email
+        td = mark.article.title
         td = mark.value
         td = link_to 'Show', mark
         td = link_to 'Edit', edit_mark_path(mark)

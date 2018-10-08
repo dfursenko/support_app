@@ -10,4 +10,8 @@ class Article < ApplicationRecord
   validates :category,  presence: true
   validates :title,     presence: true, length: { in: 2..150 }
   validates :published, inclusion: { in: [true, false] }
+
+  def mark(user, article)
+    Mark.find_or_create_by user: user, article: article
+  end
 end

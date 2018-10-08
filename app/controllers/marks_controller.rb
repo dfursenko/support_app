@@ -25,6 +25,7 @@ class MarksController < ApplicationController
   # POST /marks.json
   def create
     @mark = Mark.new(mark_params)
+    @mark.user = User.first
 
     respond_to do |format|
       if @mark.save
