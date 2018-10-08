@@ -1,10 +1,10 @@
 class Article < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :tags
   # accepts_nested_attributes_for :tags
-  has_many :marks
+  has_many :marks, dependent: :destroy
 
   validates :user,      presence: true
   validates :category,  presence: true

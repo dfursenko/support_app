@@ -5,6 +5,6 @@ class Category < ApplicationRecord
 
   validates :title,     presence: true,   length:       { in: 2..50 }
   validates :level,     presence: true,   numericality: { only_integer: true }
-  validates :parent,    presence: true
+  # validates :parent,    presence: true
   validates :published, inclusion: { in: [true, false] }
 end
