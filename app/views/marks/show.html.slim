@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong User:
+  = @mark.user
+p
+  strong Article:
+  = @mark.article
+p
+  strong Value:
+  = @mark.value
+
+=> link_to 'Edit', edit_mark_path(@mark)
+'|
+=< link_to 'Back', marks_path
