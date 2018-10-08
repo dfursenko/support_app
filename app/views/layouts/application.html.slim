@@ -9,6 +9,11 @@ html
   body
     = render 'layouts/header'
     .page-wrap
+      p.notice
+        = notice
+      p.alert
+        = alert
+
       = render 'layouts/sidebar'
       .page-content
         .container-fluid

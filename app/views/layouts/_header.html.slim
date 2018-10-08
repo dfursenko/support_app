@@ -18,7 +18,15 @@ header.top
             a.nav-link[href="#{new_ticket_path}"]
               | Создать тикет
 
-
+      .user_sign
+        - if user_signed_in?
+          span
+            =< link_to current_user.email, user_profile_path(current_user)
+          =< link_to 'Выйти', destroy_user_session_path, :method => :delete
+        - else
+          = link_to 'Войти', new_user_session_path
+          | или
+          = link_to 'Зарегистрироваться', new_user_registration_path
 
   / .logo Сайт
   / nav.menu
