@@ -1,7 +1,28 @@
 header.top
-  .logo Сайт
-  nav.menu
-    |  <a href="#{root_path}">Главная</a>
-    |  <a href="#{page_about_path}">О проекте</a>
+  .navbar.navbar-light.navbar-expand-lg
+    button.sidebar-toggler[type="button"]
+      span.iconfont.iconfont-sidebar-open.sidebar-toggler__open
+      span.iconfont.iconfont-alert-close.sidebar-toggler__close
+
+    a.navbar-brand[href="#{root_path}"] Support_app
+
+    a.navbar-brand-sm[href="#{root_path}"] S_App
+
+    #navbar-collapse.collapse.navbar-collapse
+      .navbar__menu
+        ul.navbar-nav
+          li.nav-item.navbar__menu-item
+            a.nav-link[href="#{root_path}"]
+              | База знаний
+          li.nav-item.navbar__menu-item
+            a.nav-link[href="#{new_ticket_path}"]
+              | Создать тикет
+
+
+
+  / .logo Сайт
+  / nav.menu
+  /   |  <a href="#{root_path}">Главная</a>
+  /   |  <a href="#{page_about_path}">О проекте</a>
 
 

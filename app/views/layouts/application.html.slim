@@ -9,6 +9,9 @@ html
   body
     .container
       = render 'layouts/header'
-      .content
-        = yield
+      .page-wrap
+        = render 'layouts/sidebar'
+        .page-content
+          .container-fluid
+            = yield
       = render 'layouts/footer'
