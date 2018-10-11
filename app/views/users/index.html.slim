@@ -6,10 +6,14 @@ table
       th
       th
       th
+      th
+      th
+      th
 
   tbody
     - @users.each do |user|
       tr
+        td = user.name
         td = user.email
         td = user.role.name
         td = link_to 'Show', user
