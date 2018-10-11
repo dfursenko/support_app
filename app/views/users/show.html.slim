@@ -1,5 +1,14 @@
 p#notice = notice
 
+h1
+  | User
+
+p
+  strong Email:
+  = @user.email
+p
+  strong Role:
+  = @user.role
 
 => link_to 'Edit', edit_user_path(@user)
 '|

@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :marks
 
-  validates :email,     presence: true, uniqueness: true
-  validates :password,  presence: true
+  validates :email, presence: true, uniqueness: true
+  # validates :password,  presence: true
   # validates :role,      presence: true
 end
