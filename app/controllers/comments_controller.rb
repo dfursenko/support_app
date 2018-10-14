@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
@@ -26,7 +27,7 @@ class CommentsController < ApplicationController
   def create
     # @comment = Comment.new(comment_params)
     @comment = @commentable.comments.new comment_params
-    @comment.user = User.find 3
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
@@ -58,7 +59,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @commentable, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

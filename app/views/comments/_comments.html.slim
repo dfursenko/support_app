@@ -3,4 +3,7 @@
   br
   = comment.body
   br
+  = link_to 'Destroy', [comment.commentable, comment],
+          data: { confirm: 'Are you sure?' }, method: :delete
   br
+  / = comment.commentable

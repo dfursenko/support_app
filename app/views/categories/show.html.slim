@@ -4,15 +4,21 @@ p
   strong Title:
   = @category.title
 p
-  strong Level:
-  = @category.level
-p
-  strong Parent:
-  = @category.parent
-p
-  strong Published:
-  = @category.published
+  strong Articles:
+  br
+  - @category.articles.each do |article|
+    = link_to article.title, article_path(article)
+    br
+/ p
+/   strong Level:
+/   = @category.level
+/ p
+/   strong Parent:
+/   = @category.parent
+/ p
+/   strong Published:
+/   = @category.published
 
-=> link_to 'Edit', edit_category_path(@category)
+/ => link_to 'Edit', edit_category_path(@category)
 '|
 =< link_to 'Back', categories_path
