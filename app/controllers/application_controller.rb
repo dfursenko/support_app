@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  # load_and_authorize_resource
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 
-  def after_sign_in_path_for(resource)
-    current_user_path
-  end
+  # def after_sign_in_path_for(resource)
+  #   current_user_path
+  # end
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
