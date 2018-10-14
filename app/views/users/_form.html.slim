@@ -14,5 +14,5 @@
     = f.email_field :email
   .field
     = f.label :role
-    = f.collection_select(:role_id, Role.all, :id, :name, {prompt: "Выберите роль"})
+    = f.collection_select(:role_ids, Role.all, :id, :name, {prompt: "Выберите роль"})
   .actions = f.submit

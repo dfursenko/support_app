@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :role
+  # has_and_belongs_to_many :roles, join_table: :users_roles
   has_many :articles, dependent: :destroy
   has_many :requests, class_name: 'Ticket', foreign_key: 'user_id', dependent: :destroy
   has_many :tickets,  class_name: 'Ticket', foreign_key: 'moderator_id', dependent: :destroy
