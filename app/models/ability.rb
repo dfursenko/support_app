@@ -5,14 +5,15 @@ class Ability
     user ||= User.new
 
     can :read, [Category, Article, User, Devise, Comment]
-    # can :destroy, Comment, user_id: user.id
 
-    # if user.has_role :user
-    #   can :read
-    # end
-    # if current_user.has_role :admin
+    if user.has_role? :user
+      can :read
+      can :destroy, Comment, user_id: user.id
+    end
+    # if user.has_role? :admin
     #     can :manage, :all
     # end
+
     # can :read, :all # permissions for every user, even if not logged in
     # if user.present?  # additional permissions for logged in users (they can manage their posts)
     #   can :manage, Post, user_id: user.id
