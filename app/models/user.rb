@@ -15,4 +15,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   # validates :password,  presence: true
   # validates :role,      presence: true
+
+  after_create :assign_default_role
+
+  def assign_default_role
+    add_role(:user) if roles.blank?
+  end
 end

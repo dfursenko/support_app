@@ -10,12 +10,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super do |resource|
-      resource.role_id = Role.find_by(name: 'user').id
-      resource.save
-    end
-  end
+  # def create
+  #   super do |resource|
+  #     resource.add_role 'user'
+  #     resource.save
+  #   end
+  # end
 
   # GET /resource/edit
   # def edit
