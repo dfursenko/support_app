@@ -22,6 +22,10 @@ class Ability
       can :manage, [Category, Tag, Article]
     end
 
+    if user.has_role? :support
+      can :manage, Ticket
+    end
+
     if user.has_role? :admin
         can :manage, :all
     end
