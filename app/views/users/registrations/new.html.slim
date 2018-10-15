@@ -1,3 +1,52 @@
+div class="p-signup-a"
+  img src="img/reg.png" alt="" class="p-signup-a__image" style="width: 40%"
+
+  div class="p-signup-a__wrap"
+    form class="p-signup__form"
+      h2 class="p-signup__form-heading" Регистрация
+      div class="p-signup__form-content"
+        div class="row"
+          div class="form-group col-md-12"
+            label for="p-signup-first-name" Ваше имя
+            input type="text" class="form-control" id="p-signup-first-name" placeholder="Как к Вам обращаться?"
+        div class="row"
+          div class="form-group col-md-12"
+            label for="p-signup-work-email">Ваша электронная почта
+            input type="email" class="form-control" id="p-signup-work-email" placeholder="you@yourcompany.com"
+        div class="row"
+          div class="form-group col-md-12"
+            label for="p-signup-set-password" Установите пароль
+            input type="password" class="form-control" id="p-signup-set-password" placeholder="Придумайте надежный пароль"
+        div class="row"
+          div class="form-group col-md-12"
+            label for="p-signup-repeat-password" Повторите пароль
+            input type="password" class="form-control" id="p-signup-repeat-password" placeholder="Пароли должны совпадать"
+
+        div
+          button type="button" class="btn btn-info btn-block btn-lg p-signup__form-submit" Зарегистрироваться
+
+
+        br
+        br
+        div class="p-signup-a__form-separator"
+          span Или
+
+        a href="#" class="p-signup-a__facebook"
+          span class="iconfont iconfont-facebook p-signup-a__facebook-icon"
+          span class="p-signup-a__facebook-text" Через Facebook
+
+        div class="p-signup__form-links"
+          div class="p-signup__form-link"
+            | Регистрируясь на сайте, Вы соглашаетесь с нашими
+            a href="#" class="link-info" Правилами
+          div class="p-signup__form-link"
+            | Уже зарегистрированы?
+            a href="signin.html" class="link-info" Войти
+
+
+
+
+
 h2
   | Sign up (users)
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
