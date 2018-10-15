@@ -29,7 +29,7 @@ class Supports::TicketsController < TicketsController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+        format.html { redirect_to [:supports, @ticket], notice: 'Ticket was successfully created.' }
         format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class Supports::TicketsController < TicketsController
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
+        format.html { redirect_to [:supports, @ticket], notice: 'Ticket was successfully updated.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class Supports::TicketsController < TicketsController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
+      format.html { redirect_to supports_tickets_url, notice: 'Ticket was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
