@@ -1,48 +1,124 @@
-p#notice = notice
+/ p#notice = notice
+/
+/
+/ h1
+/   = @article.title
+/
+/ h4
+/   strong Автор:
+/   = @article.user.email
+/ h3
+/   strong Раздел:
+/   = @article.category.title
+/ p
+/   strong Body:
+/   = @article.body
+/ p
+/   strong Tags:
+/   = @article.tags.map{|t| t.name}.join(", ")
+/ p
+/   strong Comments:
+/   br
+/   = render partial: 'comments/comments', locals: {comments: @comments}
+/ h2
+/   - if @comments
+/     = paginate @comments, param_name: :comments_part, params: {anchor: 'comment-header'}
+/ p
+/   strong Published:
+/   = @article.published
+/
+/ - if user_signed_in?
+/   p
+/     = render partial: 'comments/form', locals: {commentable: @article}
+/ p
+/   | Была ли данная статья полезна?
+/   = form_for @article.mark User.first, @article do |form|
+/     = form.hidden_field :article_id, value: @article.id
+/     = form.hidden_field :value, value: true
+/     = form.submit value: "Да"
+/
+/   = form_for @article.mark User.first, @article do |form|
+/     = form.hidden_field :article_id, value: @article.id
+/     = form.hidden_field :value, value: false
+/     = form.submit value: "Нет"
+/
+/
+/ / => link_to 'Edit', edit_article_path(@article)
+/ '|
+/ / =< link_to 'Back', articles_path
 
 
-h1
-  = @article.title
+.container-fluid.container-fh.l-2column
+  .m-nav.col-1
+    .m-nav.col-1
+      .m-nav__side-top
+        h5.m-content__heading
+          = link_to 'Разделы', root_path
+        br
+        ul.m-nav__menu
+          - @categories.each do |category|
+            li class="m-nav__menu-item #{ category == @article.category ? 'is-active' : ''}"
+              = link_to category.title, category, class: 'm-nav__menu-link'
+  .m-content.col-2
+    .m-nav__side-top
+      h5.m-nav__heading
+        | Статьи
+      ul.m-nav__menu
+        - @articles.each do |article|
+          li class="m-nav__menu-item #{ article == @article ? 'is-active' : ''}"
+            = link_to article.title, article, class: 'm-nav__menu-link'
+  .m-content
+    ol.breadcrumb
+      li.breadcrumb-item
+        a[href="/support_app_layout/categories.html"]
+          | Главная
+      li.breadcrumb-item
+        a[href="/support_app_layout/category.html"]
+          | Регистрация и вход
+      li.breadcrumb-item.active
+        | Регистрация
+    h2.m-task__name
+      = @article.title
+    .m-task__desc
+      .m-task__desc-text
+        = @article.body
+    br
+    .m-task__info
+      .m-task__labels
+        h4.m-task__labels-heading
+          | Метки
+        .m-task__labels-items
+          - @article.tags.each do |tag|
+            a[href="#"]
+              span.badge.badge-sm.badge-outline-info.badge-rounded.mb-3.mr-3
+                = tag.name
 
-h4
-  strong Автор:
-  = @article.user.email
-h3
-  strong Раздел:
-  = @article.category.title
-p
-  strong Body:
-  = @article.body
-p
-  strong Tags:
-  = @article.tags.map{|t| t.name}.join(", ")
-p
-  strong Comments:
-  br
-  = render partial: 'comments/comments', locals: {comments: @comments}
-h2
-  - if @comments
-    = paginate @comments, param_name: :comments_part, params: {anchor: 'comment-header'}
-p
-  strong Published:
-  = @article.published
+    div.m-task__comments
+      h3.m-task__comments-heading
+        | Комментарии
+      - if user_signed_in?
+        = render partial: 'comments/form', locals: {commentable: @article}
 
-- if user_signed_in?
-  p
-    = render partial: 'comments/form', locals: {commentable: @article}
-p
-  / | Была ли данная статья полезна?
-  / = form_for @article.mark User.first, @article do |form|
-  /   = form.hidden_field :article_id, value: @article.id
-  /   = form.hidden_field :value, value: true
-  /   = form.submit value: "Да"
-  /
-  / = form_for @article.mark User.first, @article do |form|
-  /   = form.hidden_field :article_id, value: @article.id
-  /   = form.hidden_field :value, value: false
-  /   = form.submit value: "Нет"
-
-
-/ => link_to 'Edit', edit_article_path(@article)
-'|
-/ =< link_to 'Back', articles_path
+      .m-task__comment-items
+        - @comments.each do |comment|
+          .m-task__comment
+            img.m-task__comment-avatar.rounded-circle[src="img/users/user-14.png" alt="" width="56" height="56"]
+            .m-task__comment-wrap
+              a.m-task__comment-reply-btn[href="#"]
+                span.iconfont.iconfont-reply
+                | Reply
+              .m-task__comment-owner
+                a.m-task__comment-name[href="#"]
+                  = comment.user.name
+                span.m-task__comment-date
+                  | Jun 23 at 09:45 AM
+              .m-task__comment-content
+                .m-task__comment-text
+                  = comment.body
+                .m-task__comment-images
+                  img.m-task__comment-image[src="img/social-profile/5.png" alt=""]
+                  img.m-task__comment-image[src="img/social-profile/6.png" alt=""]
+                  img.m-task__comment-image[src="img/social-profile/7.png" alt=""]
+            - if user_signed_in?
+              - if comment.user.id == current_user.id
+                = link_to 'Удалить комментарий', [comment.commentable, comment], data: {confirm: 'Are you sure?'}, method: :delete

@@ -36,6 +36,9 @@ html
               a class="btn btn-info btn-chambray" href="#{new_user_registration_path}" Регистрация
 
     div class="p-front__content"
+      - flash.each do |key, value|
+        div class="alert alert-message alert-message-#{key}" style='position: absolute; z-index: 1041; top: 3px'
+          = value
       = yield
 
     footer class="p-front__footer"
@@ -45,6 +48,11 @@ html
         li class="nav-item"
           a class="nav-link" href="#{page_terms_path}" Правила сайта
       span 2018 &copy; Техническая поддержка
+
+/ <div class="alert alert-message alert-message-red" role="alert">
+/   <div class="alert-message-heading">Message</div>
+/   <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae</p>
+/   <span class="close iconfont iconfont-alert-close" data-dismiss="alert"></span>
 
       / - if user_signed_in?
       /   span

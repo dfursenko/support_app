@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
-  # resources :marks
+  resources :marks
   # resources :tags
   # resources :tickets
   # resources :articles

@@ -7,7 +7,7 @@ class Ability
     can :read, [Category, Article, User, Devise, Comment] # TODO: only nested comments
 
     if user.has_role? :user
-      can :destroy, Comment, user_id: user.id
+      can %i[create destroy], Comment, user_id: user.id
       can :manage, Ticket, user_id: user.id
       cannot %i[update destroy], Ticket
       can :update, User, id: user.id
