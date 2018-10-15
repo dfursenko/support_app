@@ -22,8 +22,10 @@ class Ability
       can :manage, [Category, Tag, Article]
     end
 
-    if user.has_role? :support
+    if user.has_role? :expert
       can :manage, Ticket
+      can :manage, Comment
+      can %i[read update], User # TODO: only ban|unbun
     end
 
     if user.has_role? :admin
