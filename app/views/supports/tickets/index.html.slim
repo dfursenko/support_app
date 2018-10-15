@@ -1,0 +1,29 @@
+h1 Listing tickets
+
+table
+  thead
+    tr
+      th User
+      th Body
+      th Moderator
+      th Status
+      th
+      th
+      th
+
+  tbody
+    - @tickets.each do |ticket|
+      -if ticket.user.id == current_user.id
+        tr
+          td = ticket.user.email
+          td = ticket.body
+          td = ticket.moderator.email
+          td = ticket.status
+          td = link_to 'Show', ticket
+          -if current_user.has_role? :support
+            td = link_to 'Edit', edit_ticket_path(ticket)
+            td = link_to 'Destroy', ticket, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Ticket', new_ticket_path

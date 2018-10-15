@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong User:
+  = @ticket.user
+p
+  strong Body:
+  = @ticket.body
+p
+  strong Moderator:
+  = @ticket.moderator
+p
+  strong Status:
+  = @ticket.status
+
+p
+  = render partial: 'comments/form', locals: {commentable: @ticket}
+-if current_user.has_role? :support
+  => link_to 'Edit', edit_ticket_path(@ticket)
+'|
+=< link_to 'Back', tickets_path
