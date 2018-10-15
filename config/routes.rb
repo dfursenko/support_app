@@ -24,6 +24,13 @@ Rails.application.routes.draw do
 
   resources :comments
 
+  namespace :supports do
+    resources :categories do
+      resources :articles
+    end
+    resources :tags
+    resources :articles
+  end
 
   # resources :marks
   # resources :tags
