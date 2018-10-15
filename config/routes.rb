@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   # resources :tickets
   # resources :articles
   # resources :categories
-  # get 'page/about'
+  get 'page/contacts'
+  get 'page/terms'
+  get 'page/about'
   root 'categories#index'
 end
