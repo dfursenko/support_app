@@ -15,7 +15,7 @@ p
 
 p
   = render partial: 'comments/form', locals: {commentable: @ticket}
-
-=> link_to 'Edit', edit_ticket_path(@ticket)
+-if current_user.has_role? :support
+  => link_to 'Edit', edit_ticket_path(@ticket)
 '|
 =< link_to 'Back', tickets_path

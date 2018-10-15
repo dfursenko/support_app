@@ -1,16 +1,44 @@
 Rails.application.routes.draw do
-  resources :marks
-  resources :tags
+  # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+    # sessions: 'users/sessions'
+  }
+
+  resources :categories, only: %i[index show] do
+    resources :articles, only: :index
+  end
+
+  resources :articles, only: :show do
+    resources :comments, only: %i[index create destroy], module: :articles
+  end
+
+  get '/articles', to: redirect('/categories')
+
+  resources :tickets, except: %i[edit destroy] do
+    resources :comments, only: %i[index create destroy], module: :tickets
+  end
+
+  resources :users
+
   resources :comments
-  resources :tickets
-  resources :articles
-  resources :categories
-  resources :articles do
-    resources :comments, module: :articles
+
+  namespace :supports do
+    resources :categories do
+      resources :articles
+    end
+    resources :tags
+    resources :articles
+
+    resources :tickets
   end
-  resources :tickets do
-    resources :comments, module: :tickets
-  end
-  root 'articles#index'
-  get 'page/about'
+
+  # resources :marks
+  # resources :tags
+  # resources :tickets
+  # resources :articles
+  # resources :categories
+  # get 'page/about'
+  root 'categories#index'
 end

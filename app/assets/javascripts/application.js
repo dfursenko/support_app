@@ -12,14 +12,4 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree ../vendor/jquery/
-//= require_tree ../vendor/popper/
-//= require_tree ../vendor/bootstrap/js/
-//= require_tree ../vendor/select2/js/
-//= require_tree ../vendor/simplebar/
-//= require_tree ../vendor/text-avatar/
-//= require_tree ../vendor/tippyjs/
-//= require_tree ../vendor/flatpickr/
-//= require_tree ../vendor/wnumb/
-//= require_tree ../vendor/universe-admin/js/
 //= require_tree .

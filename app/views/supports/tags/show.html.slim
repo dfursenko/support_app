@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @tag.name
+
+=> link_to 'Edit', edit_supports_tag_path(@tag)
+'|
+=< link_to 'Back', supports_tags_path

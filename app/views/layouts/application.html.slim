@@ -7,10 +7,29 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = render 'layouts/header'
+    - if user_signed_in?
+      span
+        | Здравствуйте,
+      = link_to current_user.name, current_user
+      =< link_to 'Выйти', destroy_user_session_path, :method => :delete
+    - else
+      = link_to 'Войти', new_user_session_path
+      | или
+      = link_to 'Зарегистрироваться', new_user_registration_path
+
+    / = render 'layouts/header'
     .page-wrap
-      = render 'layouts/sidebar'
-      .page-content
-        .container-fluid
-          = yield
-    = render 'layouts/footer'
+      / p.notice
+      /   = notice
+      / p.alert
+      /   = alert
+      - flash.each do |key, value|
+        div class="alert alert-#{key}"
+          = value
+
+      / = render 'layouts/sidebar'
+      / .page-content
+      /   .container-fluid
+      = yield
+    / = render 'layouts/footer'
+    / = params

@@ -10,19 +10,23 @@ Article.destroy_all  if Article.any?
 Comment.destroy_all  if Comment.any?
 Mark.destroy_all     if Mark.any?
 
-# # Roles
-admin_role = Role.create! name: 'admin', code: 1
-moder_role = Role.create! name: 'moderator', code: 2
-user_role  = Role.create! name: 'user', code: 3
-
 # Users
-admin = User.create! email: 'admin@mail.ru', password: 12341234, role: admin_role
-moder = User.create! email: 'moder@mail.ru', password: 12341234, role: moder_role
-user  = User.create! email: 'user@mail.ru',  password: 12341234, role: user_role
+admin = User.create! name: 'Администратор', email: 'admin@mail.ru', password: 12341234
+expert = User.create! name: 'Специалист', email: 'support@mail.ru', password: 12341234
+editor = User.create! name: 'Редактор', email: 'editor@mail.ru', password: 12341234
+moder = User.create! name: 'Модератор', email: 'moder@mail.ru', password: 12341234
+user  = User.create! name: 'Пользователь', email: 'user@mail.ru',  password: 12341234
+
+# # Roles
+admin.add_role 'admin'
+expert.add_role 'expert'
+editor.add_role 'editor'
+moder.add_role 'moderator'
+user.add_role 'user'
 
 # Tickets
 10.times do |i|
-  Ticket.create user_id: 3, body: "Запрос №#{i}", moderator: moder, status: true
+  Ticket.create! user: user, body: "Запрос №#{i}", moderator: moder, status: true
 end
 
 # Tags
@@ -41,6 +45,8 @@ end
     Article.create! user: admin, category: category, title: title, body: body, published: true, tag_ids: tag_ids
   end
 end
+
+
 
 # Comments
 Ticket.all.each do |ticket|
