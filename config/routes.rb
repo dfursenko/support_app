@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
     resources :tags
     resources :articles
+
+    resources :tickets
   end
 
   # resources :marks
