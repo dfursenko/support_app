@@ -22,8 +22,12 @@ html
         div class="p-front__navbar-collapse"
           div class="navbar-nav"
             a class="nav-item nav-link" href="#{categories_path}" База знаний
-            a class="nav-item nav-link" href="#{page_about_path}" О проекте
-            =< link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'nav-item nav-link' if user_signed_in?
+            - unless user_signed_in?
+              a class="nav-item nav-link" href="#{page_about_path}" О проекте
+            - if user_signed_in?
+              / a class="nav-item nav-link" href="#{current_user_path}" Личный кабинет
+              = link_to 'Личный кабинет', current_user, class: 'nav-item nav-link'
+              =< link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'nav-item nav-link'
 
           - unless user_signed_in?
             form class="form-inline"
