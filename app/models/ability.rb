@@ -18,6 +18,10 @@ class Ability
       can %i[read update], User # TODO: only ban|unbun
     end
 
+    if user.has_role? :editor
+      can :manage, [Category, Tag, Article]
+    end
+
     if user.has_role? :admin
         can :manage, :all
     end
