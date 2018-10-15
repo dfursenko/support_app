@@ -7,12 +7,13 @@ class Ability
     can :read, [Category, Article, User, Devise, Comment]
 
     if user.has_role? :user
-      can :read
       can :destroy, Comment, user_id: user.id
+      can :manage, Ticket, user_id: user.id
+      cannot %i[update destroy], Ticket
     end
-    # if user.has_role? :admin
-    #     can :manage, :all
-    # end
+    if user.has_role? :admin
+        can :manage, :all
+    end
 
     # can :read, :all # permissions for every user, even if not logged in
     # if user.present?  # additional permissions for logged in users (they can manage their posts)
