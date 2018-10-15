@@ -16,16 +16,17 @@ Rails.application.routes.draw do
 
   get '/articles', to: redirect('/categories')
 
-  # resources :users
+  # resources :tickets, except: %i[edit destroy] do
+  #   resources :comments, only: %i[index create destroy], module: :tickets
+  # end
+
+  resources :users
   # resources :marks
   # resources :tags
   # resources :comments
   # resources :tickets
   # resources :articles
   # resources :categories
-  # resources :tickets do
-  #   resources :comments, module: :tickets
-  # end
   # get 'page/about'
   root 'categories#index'
 end
