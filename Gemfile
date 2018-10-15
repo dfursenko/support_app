@@ -41,6 +41,7 @@ gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'cancancan', '~> 2.0'
 gem 'rolify', '~> 5.2'
 gem 'rails_admin', '~> 1.3'
+gem 'bootstrap', '~> 4.1.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
