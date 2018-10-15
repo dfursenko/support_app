@@ -1,28 +1,41 @@
-h1 Listing categories
+.container-fluid.container-fh.l-2column
+  .m-content
+    .row
+      - @categories.each do |category|
+        .col-lg-4.mb-5
+          h2.m-task__name
+            = link_to category.title, category, class: 'm-nav__menu-link'
+          ul.m-mail__channels
+            - category.articles.each do |article|
+              li
+                = link_to article.title, article, class: 'link-info'
 
-table
-  thead
-    tr
-      th Title
-      / th Level
-      / th Parent
-      / th Published
-      / th
-      / th
-      / th
 
-  tbody
-    - @categories.each do |category|
-      tr
-        / td = category.title
-        td = link_to category.title, category
-        / td = category.level
-        / td = category.parent.title if category.parent
-        / td = category.published
-        / td = link_to 'Show', category
-        / td = link_to 'Edit', edit_category_path(category)
-        / td = link_to 'Destroy', category, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
+/ h1 Listing categories
+/
+/ table
+/   thead
+/     tr
+/       th Title
+/       / th Level
+/       / th Parent
+/       / th Published
+/       / th
+/       / th
+/       / th
+/
+/   tbody
+/     - @categories.each do |category|
+/       tr
+/         / td = category.title
+/         td = link_to category.title, category
+/         / td = category.level
+/         / td = category.parent.title if category.parent
+/         / td = category.published
+/         / td = link_to 'Show', category
+/         / td = link_to 'Edit', edit_category_path(category)
+/         / td = link_to 'Destroy', category, data: { confirm: 'Are you sure?' }, method: :delete
+/
+/ br
 
 / = link_to 'New Category', new_category_path
