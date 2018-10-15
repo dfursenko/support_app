@@ -5,7 +5,8 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    # @tickets = Ticket.all
+    @tickets = Ticket.where(user_id: current_user.id)
   end
 
   # GET /tickets/1
@@ -70,6 +71,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:user_id, :body, :moderator_id, :status)
+      params.require(:ticket).permit(:user_id, :title, :body, :moderator_id, :status)
     end
 end

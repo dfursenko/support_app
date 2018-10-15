@@ -1,0 +1,53 @@
+.p-signin-a
+  div.p-signin-a__form
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      h4.p-signin-a__form-heading
+        | Вход
+      .form-group
+        / input.form-control.form-control-lg[type="email" placeholder="Емейл"]
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg', placeholder: 'Емейл'
+      .form-group
+        / input.form-control.form-control-lg[type="password" placeholder="Пароль"]
+        = f.password_field :password, autocomplete: "current-password", class: 'form-control form-control-lg', placeholder: 'Пароль'
+      .form-group
+        / button.btn.btn-info.btn-lg.btn-block.btn-rounded[type="button"]
+          | Войти
+        = f.submit 'Войти', class: 'btn btn-info btn-lg btn-block btn-rounded', style: 'height: 47px'
+      label class="custom-control custom-checkbox ml-4"
+        / input class="custom-control-input" checked="" type="checkbox"
+        = f.check_box :remember_me, class: 'custom-control-input', checked: true
+        span class="custom-control-indicator"
+        span class="custom-control-description" Запомнить меня
+      .p-signin-a__form-separator
+        span
+          | Или
+      .form-group
+        button.btn.btn-chambray.btn-block.iconfont.icon-left.btn-lg.btn-rounded.p-signin-a__form-facebook[type="button"]
+          |  Войти через Facebook
+          span.btn-icon.iconfont.iconfont-facebook
+    .p-signin-a__form-link
+      | Еще не регистрировались?
+      a[href="#{new_user_registration_path}"]
+        |  Регистрация
+
+
+
+/ h2
+/   | Log in
+/ = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+/   .field
+/     = f.label :email
+/     br
+/     = f.email_field :email, autofocus: true, autocomplete: "email"
+/   .field
+/     = f.label :password
+/     br
+/     = f.password_field :password, autocomplete: "current-password"
+/   - if devise_mapping.rememberable?
+/     .field
+/       = f.check_box :remember_me
+/       = f.label :remember_me
+/   .actions
+/     = f.submit "Log in"
+/ = render "devise/shared/links"
+

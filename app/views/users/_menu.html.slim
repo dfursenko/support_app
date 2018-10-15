@@ -1,0 +1,31 @@
+.m-social-profile__nav
+  h1
+    | Личный кабинет
+  br
+  br
+  .m-social-profile__nav-section
+    h6.m-social-profile__nav-section-heading
+      |  Обращения
+    ul.m-social-profile__nav-menu
+      li class="m-social-profile__nav-menu-item #{ current_page?(tickets_path) ? 'is-active' : ''}"
+        / = link_to 'Мои обращения', tickets_path, class: 'm-social-profile__nav-menu-link'
+        /   span.iconfont.iconfont-individual.m-social-profile__nav-menu-icon
+        a.m-social-profile__nav-menu-link[href="#{tickets_path}"]
+          span.iconfont.iconfont-individual.m-social-profile__nav-menu-icon
+          |  Мои обращения
+      li class="m-social-profile__nav-menu-item  #{ current_page?(new_ticket_path) ? 'is-active' : ''}"
+        a.m-social-profile__nav-menu-link[href="#{new_ticket_path}"]
+          span.iconfont.iconfont-profile-history.m-social-profile__nav-menu-icon
+          |  Создать новое обращение
+  .m-social-profile__nav-section
+    h6.m-social-profile__nav-section-heading
+      |  Профиль
+    ul.m-social-profile__nav-menu
+      li class="m-social-profile__nav-menu-item #{ current_page?(user_path current_user) ? 'is-active' : ''}"
+        a.m-social-profile__nav-menu-link[href="#{user_path current_user}"]
+          span.iconfont.iconfont-document.m-social-profile__nav-menu-icon
+          |  Мои данные
+      li class="m-social-profile__nav-menu-item #{ current_page?(edit_user_registration_path) ? 'is-active' : ''}"
+        a.m-social-profile__nav-menu-link[href="#{edit_user_registration_path}"]
+          span.iconfont.iconfont-profile-edit.m-social-profile__nav-menu-icon
+          |  Редактировать данные
