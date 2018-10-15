@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'
@@ -34,11 +34,13 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
-  # resources :marks
+  resources :marks
   # resources :tags
   # resources :tickets
   # resources :articles
   # resources :categories
-  # get 'page/about'
+  get 'page/contacts'
+  get 'page/terms'
+  get 'page/about'
   root 'categories#index'
 end

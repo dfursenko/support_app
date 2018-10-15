@@ -1,29 +1,107 @@
-h1 Listing tickets
+/ h1 Listing tickets
+/
+/ table
+/   thead
+/     tr
+/       th User
+/       th Body
+/       th Moderator
+/       th Status
+/       th
+/       th
+/       th
+/
+/   tbody
+/     - @tickets.each do |ticket|
+/       -if ticket.user.id == current_user.id
+/         tr
+/           td = ticket.user.email
+/           td = ticket.body
+/           td = ticket.moderator.email
+/           td = ticket.status
+/           td = link_to 'Show', ticket
+/           -if current_user.has_role? :support
+/             td = link_to 'Edit', edit_ticket_path(ticket)
+/             td = link_to 'Destroy', ticket, data: { confirm: 'Are you sure?' }, method: :delete
+/
+/ br
+/
+/ = link_to 'New Ticket', new_ticket_path
 
-table
-  thead
-    tr
-      th User
-      th Body
-      th Moderator
-      th Status
-      th
-      th
-      th
 
-  tbody
-    - @tickets.each do |ticket|
-      -if ticket.user.id == current_user.id
+
+.container-fluid.container-fh.l-2column
+  = render 'users/menu'
+
+  .m-content
+    .row
+      .col-9
+        h2.m-task__name
+          | Мои обращения
+      .col-3
+        a.btn.btn-info.btn-block.icon-left.m-nav__add[href="#{new_ticket_path}"]
+          |  Создать новое обращение
+          span.btn-icon.iconfont.iconfont-plus
+    table#datatable.table.table-striped style="text-align: center"
+      thead
         tr
-          td = ticket.user.email
-          td = ticket.body
-          td = ticket.moderator.email
-          td = ticket.status
-          td = link_to 'Show', ticket
-          -if current_user.has_role? :support
-            td = link_to 'Edit', edit_ticket_path(ticket)
-            td = link_to 'Destroy', ticket, data: { confirm: 'Are you sure?' }, method: :delete
+          th
+            | № запроса
+          th
+            | Тема
+          th
+            | Состояние
+          th
+            | Последний ответ
+      tbody
+        - @tickets.each do |ticket|
+          tr
+            td
+              = link_to "##{ticket.id}", ticket, class: 'link-info'
+            td
+              = link_to ticket.title, ticket, class: 'link-info'
+            td
+              - if ticket.status
+                span.badge.badge-sm.badge-success
+                  | Открыт
+              - else
+                span.badge.badge-sm.badge-default
+                  | Закрыт
+            td
+              | 30.03.2011 12:06
 
-br
-
-= link_to 'New Ticket', new_ticket_path
+    .m-datagrid__footer
+      .m-datagrid__footer-controls
+        |  Showing 1 to 10 of 57 entries
+      nav.m-datagrid__footer-pagination
+        ul.pagination
+          li.page-item
+            a.page-link.active[href="#" aria-label="Previous"]
+              span[aria-hidden="true"]
+                | «
+              span.sr-only
+                | Previous
+          li.page-item
+            a.page-link[href="#"]
+              | 1
+          li.page-item.active
+            a.page-link[href="#"]
+              | 2
+          li.page-item
+            a.page-link[href="#"]
+              | 3
+          li.page-item
+            a.page-link[href="#"]
+              | 4
+          li.page-item
+            a.page-link[href="#"]
+              | ...
+          li.page-item
+            a.page-link[href="#"]
+              | 6
+          li.page-item
+            a.page-link[href="#" aria-label="Next"]
+              span[aria-hidden="true"]
+                | »
+              span.sr-only
+                | Next

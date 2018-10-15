@@ -1,6 +1,12 @@
-= form_for [commentable, Comment.new] do |form|
-  = form.text_area :body, placeholder: "Ваше сообщение", class: "comment-text-area"
-  = form.submit id: "comment-submit", value: "Отправить"
+/ = form_for [commentable, Comment.new] do |form|
+/   = form.text_area :body, placeholder: "Ваше сообщение", class: "comment-text-area"
+/   = form.submit id: "comment-submit", value: "Отправить"
+
+.m-task__comments-input
+  = form_for [commentable, Comment.new] do |form|
+    = form.text_area :body, placeholder: "Ваш комментарий", class: "form-control m-task__comments-textarea js-auto-size"
+    .d-flex.align-items-center.justify-content-between
+      = form.submit id: "comment-submit", value: "Отправить", class: 'btn btn-info'
 
 / = form_for [commentable, Comment.new] do |f|
 /   - if @comment.errors.any?

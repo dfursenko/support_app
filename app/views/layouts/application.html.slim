@@ -3,33 +3,80 @@ html
   head
     title
       | SupportApp
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    - if user_signed_in?
-      span
-        | Здравствуйте,
-      = link_to current_user.name, current_user
-      =< link_to 'Выйти', destroy_user_session_path, :method => :delete
-    - else
-      = link_to 'Войти', new_user_session_path
-      | или
-      = link_to 'Зарегистрироваться', new_user_registration_path
+  body class="p-front p-signup-helper"
+    div class="navbar navbar-light navbar-expand-lg p-front__navbar"
+      a class="navbar-brand" href="#{root_path}" Техническая поддержка
+      a class="navbar-brand-sm" href="#{root_path}" ТП
 
-    / = render 'layouts/header'
-    .page-wrap
-      / p.notice
-      /   = notice
-      / p.alert
-      /   = alert
+      button class="navbar-toggler" type="button" data-toggle="collapse" data-target= "#navbar-collapse"
+        span class="iconfont iconfont-navbar-open navbar-toggler__open"
+        span class="iconfont iconfont-alert-close navbar-toggler__close"
+
+      div class="collapse navbar-collapse" id="navbar-collapse"
+        div class="p-front__navbar-collapse"
+          div class="navbar-nav"
+            a class="nav-item nav-link" href="#{categories_path}" База знаний
+            - unless user_signed_in?
+              a class="nav-item nav-link" href="#{page_about_path}" О проекте
+            - if user_signed_in?
+              / a class="nav-item nav-link" href="#{current_user_path}" Личный кабинет
+              = link_to 'Личный кабинет', current_user, class: 'nav-item nav-link'
+              =< link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'nav-item nav-link'
+
+          - unless user_signed_in?
+            form class="form-inline"
+              a class="btn btn-info" href="#{new_user_session_path}" Вход
+            form class="form-inline ml-3"
+              a class="btn btn-info btn-chambray" href="#{new_user_registration_path}" Регистрация
+
+    div class="p-front__content"
       - flash.each do |key, value|
-        div class="alert alert-#{key}"
+        div class="alert alert-message alert-message-#{key}" style='position: absolute; z-index: 1041; top: 3px'
           = value
-
-      / = render 'layouts/sidebar'
-      / .page-content
-      /   .container-fluid
       = yield
-    / = render 'layouts/footer'
-    / = params
+
+    footer class="p-front__footer"
+      ul class="nav"
+        li class="nav-item"
+          a class="nav-link active" href="#{page_contacts_path}" Связаться с нами
+        li class="nav-item"
+          a class="nav-link" href="#{page_terms_path}" Правила сайта
+      span 2018 &copy; Техническая поддержка
+
+/ <div class="alert alert-message alert-message-red" role="alert">
+/   <div class="alert-message-heading">Message</div>
+/   <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae</p>
+/   <span class="close iconfont iconfont-alert-close" data-dismiss="alert"></span>
+
+      / - if user_signed_in?
+      /   span
+      /     | Здравствуйте,
+      /   = link_to current_user.name, current_user
+      /   =< link_to 'Выйти', destroy_user_session_path, :method => :delete
+      / - else
+      /   = link_to 'Войти', new_user_session_path
+      /   | или
+      /   = link_to 'Зарегистрироваться', new_user_registration_path
+      /
+      / / = render 'layouts/header'
+      / .page-wrap
+      /   / p.notice
+      /   /   = notice
+      /   / p.alert
+      /   /   = alert
+      /   - flash.each do |key, value|
+      /     div class="alert alert-#{key}"
+      /       = value
+      /
+      /   / = render 'layouts/sidebar'
+      /   / .page-content
+      /   /   .container-fluid
+      /   = yield
+      / / = render 'layouts/footer'
+      / / = params

@@ -1,24 +1,58 @@
-p#notice = notice
+.container-fluid.container-fh.l-2column
+  .m-nav.col-1
+    .m-nav__side-top
+      h5.m-content__heading
+        = link_to 'Разделы', root_path
+      br
+      ul.m-nav__menu
+        - @categories.each do |category|
+          li class="m-nav__menu-item #{ category == @category ? 'is-active' : ''}"
+            = link_to category.title, category, class: 'm-nav__menu-link'
+  .m-content
+    ol.breadcrumb
+      li.breadcrumb-item
+        a[href="#"]
+          | Главная
+      li.breadcrumb-item.active
+        | Регистрация и вход
+    h2.m-task__name
+      | Регистрация и вход
+    .row
+      - @category.articles.each do |article|
+        .col-lg-6
+          .m-task__desc
+            .m-task__desc-header
+              h3.m-task__desc-heading
+                = link_to article.title, article_path(article), class: 'link-info'
+                / a.link-info[href="/support_app_layout/article.html"]
+                /   | Регистрация
+            .m-task__desc-text
+              |  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-p
-  strong Title:
-  = @category.title
-p
-  strong Articles:
-  br
-  - @category.articles.each do |article|
-    = link_to article.title, article_path(article)
-    br
-/ p
-/   strong Level:
-/   = @category.level
-/ p
-/   strong Parent:
-/   = @category.parent
-/ p
-/   strong Published:
-/   = @category.published
 
-/ => link_to 'Edit', edit_category_path(@category)
-'|
-=< link_to 'Back', categories_path
+
+/ p#notice = notice
+/
+/ p
+/   strong Title:
+/   = @category.title
+/ p
+/   strong Articles:
+/   br
+/   - @category.articles.each do |article|
+/     = link_to article.title, article_path(article)
+/     br
+/ / p
+/ /   strong Level:
+/ /   = @category.level
+/ / p
+/ /   strong Parent:
+/ /   = @category.parent
+/ / p
+/ /   strong Published:
+/ /   = @category.published
+/
+/ / => link_to 'Edit', edit_category_path(@category)
+/ '|
+/ =< link_to 'Back', categories_path
+
