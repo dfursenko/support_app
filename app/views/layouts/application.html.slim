@@ -11,8 +11,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body class="p-front p-signup-helper"
     div class="navbar navbar-light navbar-expand-lg p-front__navbar"
-      a class="navbar-brand" href="/" Техническая поддержка
-      a class="navbar-brand-sm" href="/" ТП
+      a class="navbar-brand" href="#{root_path}" Техническая поддержка
+      a class="navbar-brand-sm" href="#{root_path}" ТП
 
       button class="navbar-toggler" type="button" data-toggle="collapse" data-target= "#navbar-collapse"
         span class="iconfont iconfont-navbar-open navbar-toggler__open"
@@ -21,38 +21,50 @@ html
       div class="collapse navbar-collapse" id="navbar-collapse"
         div class="p-front__navbar-collapse"
           div class="navbar-nav"
-            a class="nav-item nav-link" href="/support_app_layout/categories.html" База знаний
-            a class="nav-item nav-link" href="#" О проекте
-          form class="form-inline"
-            a class="btn btn-info" href="/support_app_layout/signin-a.html" Вход
+            a class="nav-item nav-link" href="#{categories_path}" База знаний
+            a class="nav-item nav-link" href="#{page_about_path}" О проекте
+            =< link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'nav-item nav-link' if user_signed_in?
+
+          - unless user_signed_in?
+            form class="form-inline"
+              a class="btn btn-info" href="#{new_user_session_path}" Вход
+            form class="form-inline ml-3"
+              a class="btn btn-info btn-chambray" href="#{new_user_registration_path}" Регистрация
+
     div class="p-front__content"
+      = yield
 
+    footer class="p-front__footer"
+      ul class="nav"
+        li class="nav-item"
+          a class="nav-link active" href="#{page_contacts_path}" Связаться с нами
+        li class="nav-item"
+          a class="nav-link" href="#{page_terms_path}" Правила сайта
+      span 2018 &copy; Техническая поддержка
 
-
-
-      - if user_signed_in?
-        span
-          | Здравствуйте,
-        = link_to current_user.name, current_user
-        =< link_to 'Выйти', destroy_user_session_path, :method => :delete
-      - else
-        = link_to 'Войти', new_user_session_path
-        | или
-        = link_to 'Зарегистрироваться', new_user_registration_path
-
-      / = render 'layouts/header'
-      .page-wrap
-        / p.notice
-        /   = notice
-        / p.alert
-        /   = alert
-        - flash.each do |key, value|
-          div class="alert alert-#{key}"
-            = value
-
-        / = render 'layouts/sidebar'
-        / .page-content
-        /   .container-fluid
-        = yield
-      / = render 'layouts/footer'
-      / = params
+      / - if user_signed_in?
+      /   span
+      /     | Здравствуйте,
+      /   = link_to current_user.name, current_user
+      /   =< link_to 'Выйти', destroy_user_session_path, :method => :delete
+      / - else
+      /   = link_to 'Войти', new_user_session_path
+      /   | или
+      /   = link_to 'Зарегистрироваться', new_user_registration_path
+      /
+      / / = render 'layouts/header'
+      / .page-wrap
+      /   / p.notice
+      /   /   = notice
+      /   / p.alert
+      /   /   = alert
+      /   - flash.each do |key, value|
+      /     div class="alert alert-#{key}"
+      /       = value
+      /
+      /   / = render 'layouts/sidebar'
+      /   / .page-content
+      /   /   .container-fluid
+      /   = yield
+      / / = render 'layouts/footer'
+      / / = params
