@@ -9,30 +9,50 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    - if user_signed_in?
-      span
-        | Здравствуйте,
-      = link_to current_user.name, current_user
-      =< link_to 'Выйти', destroy_user_session_path, :method => :delete
-    - else
-      = link_to 'Войти', new_user_session_path
-      | или
-      = link_to 'Зарегистрироваться', new_user_registration_path
+  body class="p-front p-signup-helper"
+    div class="navbar navbar-light navbar-expand-lg p-front__navbar"
+      a class="navbar-brand" href="/" Техническая поддержка
+      a class="navbar-brand-sm" href="/" ТП
 
-    / = render 'layouts/header'
-    .page-wrap
-      / p.notice
-      /   = notice
-      / p.alert
-      /   = alert
-      - flash.each do |key, value|
-        div class="alert alert-#{key}"
-          = value
+      button class="navbar-toggler" type="button" data-toggle="collapse" data-target= "#navbar-collapse"
+        span class="iconfont iconfont-navbar-open navbar-toggler__open"
+        span class="iconfont iconfont-alert-close navbar-toggler__close"
 
-      / = render 'layouts/sidebar'
-      / .page-content
-      /   .container-fluid
-      = yield
-    / = render 'layouts/footer'
-    / = params
+      div class="collapse navbar-collapse" id="navbar-collapse"
+        div class="p-front__navbar-collapse"
+          div class="navbar-nav"
+            a class="nav-item nav-link" href="/support_app_layout/categories.html" База знаний
+            a class="nav-item nav-link" href="#" О проекте
+          form class="form-inline"
+            a class="btn btn-info" href="/support_app_layout/signin-a.html" Вход
+    div class="p-front__content"
+
+
+
+
+      - if user_signed_in?
+        span
+          | Здравствуйте,
+        = link_to current_user.name, current_user
+        =< link_to 'Выйти', destroy_user_session_path, :method => :delete
+      - else
+        = link_to 'Войти', new_user_session_path
+        | или
+        = link_to 'Зарегистрироваться', new_user_registration_path
+
+      / = render 'layouts/header'
+      .page-wrap
+        / p.notice
+        /   = notice
+        / p.alert
+        /   = alert
+        - flash.each do |key, value|
+          div class="alert alert-#{key}"
+            = value
+
+        / = render 'layouts/sidebar'
+        / .page-content
+        /   .container-fluid
+        = yield
+      / = render 'layouts/footer'
+      / = params
