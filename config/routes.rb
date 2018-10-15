@@ -21,9 +21,12 @@ Rails.application.routes.draw do
   end
 
   resources :users
+
+  resources :comments
+
+
   # resources :marks
   # resources :tags
-  # resources :comments
   # resources :tickets
   # resources :articles
   # resources :categories

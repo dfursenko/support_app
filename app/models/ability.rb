@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :read, [Category, Article, User, Devise, Comment]
+    can :read, [Category, Article, User, Devise, Comment] # TODO: only nested comments
 
     if user.has_role? :user
       can :destroy, Comment, user_id: user.id
@@ -12,6 +12,12 @@ class Ability
       cannot %i[update destroy], Ticket
       can :update, User, id: user.id
     end
+
+    if user.has_role? :moderator
+      can :manage, Comment
+      can %i[read update], User # TODO: only ban|unbun
+    end
+
     if user.has_role? :admin
         can :manage, :all
     end
