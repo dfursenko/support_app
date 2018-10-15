@@ -10,6 +10,7 @@ class Ability
       can :destroy, Comment, user_id: user.id
       can :manage, Ticket, user_id: user.id
       cannot %i[update destroy], Ticket
+      can :update, User, id: user.id
     end
     if user.has_role? :admin
         can :manage, :all
