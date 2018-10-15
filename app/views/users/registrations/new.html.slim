@@ -1,83 +1,81 @@
 div class="p-signup-a"
-  img src="img/reg.png" alt="" class="p-signup-a__image" style="width: 40%"
+  = image_tag 'reg.png', class: 'p-signup-a__image', style: 'width: 40%'
 
   div class="p-signup-a__wrap"
-    form class="p-signup__form"
-      h2 class="p-signup__form-heading" Регистрация
-      div class="p-signup__form-content"
-        div class="row"
-          div class="form-group col-md-12"
-            label for="p-signup-first-name" Ваше имя
-            input type="text" class="form-control" id="p-signup-first-name" placeholder="Как к Вам обращаться?"
-        div class="row"
-          div class="form-group col-md-12"
-            label for="p-signup-work-email">Ваша электронная почта
-            input type="email" class="form-control" id="p-signup-work-email" placeholder="you@yourcompany.com"
-        div class="row"
-          div class="form-group col-md-12"
-            label for="p-signup-set-password" Установите пароль
-            input type="password" class="form-control" id="p-signup-set-password" placeholder="Придумайте надежный пароль"
-        div class="row"
-          div class="form-group col-md-12"
-            label for="p-signup-repeat-password" Повторите пароль
-            input type="password" class="form-control" id="p-signup-repeat-password" placeholder="Пароли должны совпадать"
+    div class="p-signup__form"
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'p-signup__form') do |f|
+        = devise_error_messages!
+        h2 class="p-signup__form-heading" Регистрация
+        div class="p-signup__form-content"
+          div class="row"
+            div class="form-group col-md-12"
+              label for="p-signup-first-name" Ваше имя
+              / input type="text" class="form-control" id="p-signup-first-name" placeholder="Как к Вам обращаться?"
+              = f.text_field :name, autofocus: true, class: 'form-control', id: 'p-signup-first-name', placeholder: 'Как к Вам обращаться?'
+          div class="row"
+            div class="form-group col-md-12"
+              label for="p-signup-work-email" Ваша электронная почта
+              / input type="email" class="form-control" id="p-signup-work-email" placeholder="you@yourcompany.com"
+              = f.email_field :email, autocomplete: 'email', class: 'form-control', id: 'p-signup-work-email', placeholder: 'you@yourcompany.com'
+          div class="row"
+            div class="form-group col-md-12"
+              label for="p-signup-set-password" Установите пароль
+              / input type="password" class="form-control" id="p-signup-set-password" placeholder="Придумайте надежный пароль"
+              = f.password_field :password, autocomplete: 'new-password', class: 'form-control', id: 'p-signup-set-password', placeholder: 'Придумайте надежный пароль'
+          div class="row"
+            div class="form-group col-md-12"
+              label for="p-signup-repeat-password" Повторите пароль
+              / input type="password" class="form-control" id="p-signup-repeat-password" placeholder="Пароли должны совпадать"
+              = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control', id: 'p-signup-repeat-password', placeholder: 'Пароли должны совпадать'
+          div
+            / button type="button" class="btn btn-info btn-block btn-lg p-signup__form-submit" Зарегистрироваться
+            = f.submit 'Зарегистрироваться', class: 'btn btn-info btn-block btn-lg p-signup__form-submit', style: 'height: 47px'
+          br
+          br
+          div class="p-signup-a__form-separator"
+            span Или
+          a href="#" class="p-signup-a__facebook"
+            span class="iconfont iconfont-facebook p-signup-a__facebook-icon"
+            span class="p-signup-a__facebook-text" Через Facebook
 
-        div
-          button type="button" class="btn btn-info btn-block btn-lg p-signup__form-submit" Зарегистрироваться
+          div class="p-signup__form-links"
+            div class="p-signup__form-link"
+              | Регистрируясь на сайте, Вы соглашаетесь с нашими
+              a href="#{page_terms_path}" class="link-info"
+                |  Правилами
+            div class="p-signup__form-link"
+              | Уже зарегистрированы?
+              a href="#{new_user_session_path}" class="link-info"
+                |  Войти
 
-
-        br
-        br
-        div class="p-signup-a__form-separator"
-          span Или
-
-        a href="#" class="p-signup-a__facebook"
-          span class="iconfont iconfont-facebook p-signup-a__facebook-icon"
-          span class="p-signup-a__facebook-text" Через Facebook
-
-        div class="p-signup__form-links"
-          div class="p-signup__form-link"
-            | Регистрируясь на сайте, Вы соглашаетесь с нашими
-            a href="#" class="link-info" Правилами
-          div class="p-signup__form-link"
-            | Уже зарегистрированы?
-            a href="signin.html" class="link-info" Войти
-
-
-
-
-
-h2
-  | Sign up (users)
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :name
-    br
-    = f.text_field :name, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-
-  / .field
-  /   = f.label :role
-  /   br
-  /   = f.collection_select(:role_id, Role.all, :id, :name, {prompt: "Выберите роль"})
-
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+/ div class="p-signup-a__wrap"
+/   div class="p-signup__form"
+/     = form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'p-signup__form') do |f|
+/       = devise_error_messages!
+/       h2 class="p-signup__form-heading" Регистрация
+/       div class="p-signup__form-content"
+/         div class="row"
+/           div class="form-group col-md-12"
+/             label for="p-signup-first-namfe" Ваше имя
+/             = f.text_field :name, autofocus: true, class: 'form-control', id: 'p-signup-first-name', placeholder: 'Как к Вам обращаться?'
+/       .field
+/         = f.label :email
+/         br
+/         = f.email_field :email, autocomplete: "email"
+/       .field
+/         = f.label :password
+/         - if @minimum_password_length
+/           em
+/             | (
+/             = @minimum_password_length
+/             |  characters minimum)
+/         br
+/         = f.password_field :password, autocomplete: "new-password"
+/       .field
+/         = f.label :password_confirmation
+/         br
+/         = f.password_field :password_confirmation, autocomplete: "new-password"
+/
+/       .actions
+/         = f.submit "Sign up"
+/     = render "devise/shared/links"
