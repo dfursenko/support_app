@@ -72,36 +72,7 @@
 
     .m-datagrid__footer
       .m-datagrid__footer-controls
-        |  Showing 1 to 10 of 57 entries
+        | Показано с #{@indexes.first[:num]} по #{@indexes.last[:num]} из #{@tickets_count} тикетов
       nav.m-datagrid__footer-pagination
-        ul.pagination
-          li.page-item
-            a.page-link.active[href="#" aria-label="Previous"]
-              span[aria-hidden="true"]
-                | «
-              span.sr-only
-                | Previous
-          li.page-item
-            a.page-link[href="#"]
-              | 1
-          li.page-item.active
-            a.page-link[href="#"]
-              | 2
-          li.page-item
-            a.page-link[href="#"]
-              | 3
-          li.page-item
-            a.page-link[href="#"]
-              | 4
-          li.page-item
-            a.page-link[href="#"]
-              | ...
-          li.page-item
-            a.page-link[href="#"]
-              | 6
-          li.page-item
-            a.page-link[href="#" aria-label="Next"]
-              span[aria-hidden="true"]
-                | »
-              span.sr-only
-                | Next
+        = paginate @tickets
+
