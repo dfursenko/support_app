@@ -6,7 +6,10 @@ class TicketsController < ApplicationController
   # GET /tickets.json
   def index
     # @tickets = Ticket.all
-    @tickets = Ticket.where(user_id: current_user.id)
+    @tickets_all = @tickets.where(user_id: current_user.id).order(created_at: :desc)
+    @tickets_count = @tickets_all.count
+    @tickets = @tickets_all.page(params[:page]).per(5)
+    @indexes = Ticket.indexes @tickets_all, @tickets
   end
 
   # GET /tickets/1
